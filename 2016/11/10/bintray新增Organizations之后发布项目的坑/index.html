@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://CasparGX.github.io">
-  <title>Caspar&#39;s Blog</title>
+  <title>bintray新增Organizations之后发布项目的坑2 | Caspar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Caspar's Blog">
-<meta property="og:url" content="http://CasparGX.github.io/index.html">
+  <meta name="description" content="自己写了一个自定义控件IconEditLayout，想发布到JCenter上，同时也学习一下将Android Studio项目发布到JCenter，然后按照一些教程，体验了各种坑，但是始终发布不了，于是发现一个新的坑。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bintray新增Organizations之后发布项目的坑2">
+<meta property="og:url" content="http://CasparGX.github.io/2016/11/10/bintray新增Organizations之后发布项目的坑/index.html">
 <meta property="og:site_name" content="Caspar's Blog">
+<meta property="og:description" content="自己写了一个自定义控件IconEditLayout，想发布到JCenter上，同时也学习一下将Android Studio项目发布到JCenter，然后按照一些教程，体验了各种坑，但是始终发布不了，于是发现一个新的坑。">
+<meta property="og:image" content="http://CasparGX.github.io/asset/E0EEB8A6-43FD-441E-AACC-2F8AE32EA37B.png">
+<meta property="og:updated_time" content="2016-11-10T10:48:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Caspar's Blog">
+<meta name="twitter:title" content="bintray新增Organizations之后发布项目的坑2">
+<meta name="twitter:description" content="自己写了一个自定义控件IconEditLayout，想发布到JCenter上，同时也学习一下将Android Studio项目发布到JCenter，然后按照一些教程，体验了各种坑，但是始终发布不了，于是发现一个新的坑。">
+<meta name="twitter:image" content="http://CasparGX.github.io/asset/E0EEB8A6-43FD-441E-AACC-2F8AE32EA37B.png">
   
     <link rel="alternative" href="/atom.xml" title="Caspar&#39;s Blog" type="application/atom+xml">
   
@@ -126,9 +132,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-bintray新增Organizations之后发布项目的坑" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-bintray新增Organizations之后发布项目的坑" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -137,8 +141,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/bintray新增Organizations之后发布项目的坑/">bintray新增Organizations之后发布项目的坑2</a>
+    <h1 class="article-title" itemprop="name">
+      bintray新增Organizations之后发布项目的坑2
     </h1>
   
 
@@ -146,10 +150,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>自己写了一个自定义控件<a href="https://github.com/CasparGX/IconEditLayout">IconEditLayout</a>，想发布到JCenter上，同时也学习一下将Android Studio项目发布到JCenter，然后按照一些教程，体验了各种坑，但是始终发布不了，于是发现一个新的坑。</p>
-        <p class="article-more-link">
-          <a class="article-more-a"  href="/2016/11/10/bintray新增Organizations之后发布项目的坑/#more">more >></a>
-        </p>
+        <p>自己写了一个自定义控件<a href="https://github.com/CasparGX/IconEditLayout" target="_blank" rel="external">IconEditLayout</a>，想发布到JCenter上，同时也学习一下将Android Studio项目发布到JCenter，然后按照一些教程，体验了各种坑，但是始终发布不了，于是发现一个新的坑。</p>
+<a id="more"></a>
+<p>因为发布教程都大同小异，所以不赘述了，推荐几个博文：</p>
+<ul>
+<li><a href="http://blog.csdn.net/lmj623565791/article/details/51148825" target="_blank" rel="external">Android 快速发布开源项目到jcenter</a></li>
+<li><a href="http://www.jianshu.com/p/c518a10fdaed" target="_blank" rel="external">Android 发布项目到 JCenter 遇到的各种坑</a><br>根据教程，我们Module的<code>build.gradle</code>需要加入以下配置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">apply plugin: <span class="string">'com.android.library'</span></div><div class="line">apply plugin: <span class="string">'com.novoda.bintray-release'</span><span class="comment">//添加</span></div><div class="line"></div><div class="line">android &#123;</div><div class="line">  <span class="comment">//保持不变</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    <span class="comment">//保持不变</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//添加</span></div><div class="line">publish &#123;</div><div class="line">    userOrg = <span class="string">'caspar'</span><span class="comment">//bintray.com用户名   在更新Organizations之后是填写Organizations名</span></div><div class="line">    groupId = <span class="string">'cc.xaabb'</span><span class="comment">//jcenter上的路径</span></div><div class="line">    artifactId = <span class="string">'iconeditlayout'</span><span class="comment">//项目名称</span></div><div class="line">    publishVersion = <span class="string">'1.0.0'</span><span class="comment">//版本号</span></div><div class="line">    desc = <span class="string">'Oh hi, this is a nice description for a project, right?'</span><span class="comment">//描述，不重要</span></div><div class="line">    website = <span class="string">'https://github.com/CasparGX/IconEditLayout'</span><span class="comment">//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中的<code>userOrg</code>在之前是使用用户名，而在新增Organizations后，多了一个Organizations名，并且要求和用户名不一样。</p>
+<p> <img src="/asset/E0EEB8A6-43FD-441E-AACC-2F8AE32EA37B.png" width="300" height="400" alt="图片名称" align="center"></p>
+<p>所以现在<code>userOrg</code>需要填写自己的Organizations名，并且Repo也是创建在Organizations中。</p>
+
       
     </div>
     <div class="article-info article-info-index">
@@ -165,70 +177,25 @@
   </div>
 </article>
 
-
-
-
-
-
-
-
-
-
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/10/hello-world/" class="archive-article-date">
-  	<time datetime="2016-11-10T03:01:09.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-10</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
+<nav id="article-nav">
   
   
+    <a href="/2016/11/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
 
 
       </div>
@@ -250,8 +217,8 @@
 		fancybox: true,
 		mathjax: false,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
